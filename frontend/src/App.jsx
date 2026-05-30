@@ -210,22 +210,10 @@ function QRScannerModal({ onClose, onScanned, showToast }) {
     }
   }, [])
 
-  const handleManual = (code) => {
+ const handleManual = (code) => {
     if (!code.trim()) return
-    try {
-      // El código puede ser el JSON del QR o solo el código del pedido (#XXXXXX)
-      let data
-      if (code.startsWith('{')) {
-        data = JSON.parse(code)
-      } else {
-        data = { code: code.trim() }
-      }
-      setResult(data)
-      setScanning(false)
-      onScanned(data)
-    } catch {
-      showToast('Código QR no válido', 'error')
-    }
+    setShowScanner(false)
+    onScanned(code.trim())
   }
 
   return (
