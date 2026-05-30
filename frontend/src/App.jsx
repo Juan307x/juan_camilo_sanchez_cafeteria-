@@ -3,9 +3,7 @@ import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 /* ═══════════════════════════════════════════════
    API
    ═══════════════════════════════════════════════ */
-const BASE = window.location.hostname === 'localhost'
-  ? '/api'
-  : 'https://cafeteria-backend-irn6.onrender.com/api'
+const BASE = import.meta.env.VITE_API_URL || '/api'
 
 function getToken() { return localStorage.getItem('access_token') || '' }
 
