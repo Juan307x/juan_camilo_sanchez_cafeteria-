@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: cafeteria-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT --pythonpath . urls:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: settings
