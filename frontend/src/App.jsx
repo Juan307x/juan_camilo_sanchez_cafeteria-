@@ -1336,7 +1336,7 @@ function AdminPage({ showToast }) {
     // El QR ahora contiene solo el código del pedido (string simple)
     let code = data
     try { const parsed = JSON.parse(data); code = parsed.code || parsed } catch {}
-    const found = orders.find(o => o.code === code)
+    const found = orders.find(o => o.code === code || o.code === `#${code}`)
     setShowScanner(false)
     if (found) {
       setScannedOrder(found)
